@@ -97,3 +97,38 @@ tbody tr:hover {
         content: attr(data-label);
     }
 }
+
+/* Container nút */
+.action {
+    display: flex;
+    gap: 10px;
+}
+
+/* Link chung */
+.action a {
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+/* Nút Edit */
+.action-edit {
+    background-color: #3498db;
+}
+
+.action-edit:hover {
+    background-color: #2c80b4;
+}
+
+/* Nút Delete */
+.action-delete {
+    background-color: #e74c3c;
+}
+
+.action-delete:hover {
+    background-color: #c0392b;
+}

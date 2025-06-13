@@ -19,6 +19,7 @@
                     <th>Last Name</th>
                     <th>Address</th>
                     <th>Phone Number</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,12 @@
                         </td>
                         <td>
                             <%= data[i].phoneNumber %>
+                        </td>
+                        <td>
+                            <div class="action">
+                                <a href="/edit-crud?id=<%= data[i].id %>" class="action-edit">Edit</a>
+                                <a href="/delete-crud?id=<%= data[i].id %>" class="action-delete">Delete</a>
+                            </div>
                         </td>
                     </tr>
                     <% } %>
