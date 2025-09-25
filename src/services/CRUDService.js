@@ -69,19 +69,17 @@ let getUserInfoById = (userId) => {
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let user = await db.User.findOne({
-                where: {id: data.id}
-            })
-            if (user) {
-                user.firstName = data.firstName;
-                user.lastName = data.lastName;
-                user.address = data.address;
-
-                await user.save();
-                resolve();
-            } else {
-                resolve();
-            }
+            await db.User.update(
+                {
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                },
+                {
+                    where: { id: data.id }
+                }
+            );
+            resolve();
         } catch (e) {
             reject(e);
         }
@@ -91,15 +89,10 @@ let updateUserData = (data) => {
 let deleteUserById = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let user = await db.User.findOne({
-                where: {id: userId}
-            })
-            if (user) {
-                user.destroy();
-                resolve()
-            } else {
-                resolve();
-            }
+            await db.User.destroy({
+                where: { id: userId }
+            });
+            resolve();
         } catch (e) {
             reject(e);
         }
