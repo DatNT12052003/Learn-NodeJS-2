@@ -1,40 +1,41 @@
-import express from 'express';
-import homeController from '../controllers/homeController.js';
-import userController from '../controllers/userController.js';
+import express from "express";
+import homeController from "../controllers/homeController.js";
+import userController from "../controllers/userController.js";
 
 let router = express.Router();
 
 let initWebRoutes = (app) => {
+    router.get("/", homeController.getHomePage);
 
-    router.get('/', homeController.getHomePage);
+    router.get("/about", homeController.getAboutPage);
 
-    router.get('/about', homeController.getAboutPage);
+    router.get("/dat", homeController.getDatPage);
 
-    router.get('/dat', homeController.getDatPage);
-    
-    router.get('/crud', homeController.getCRUD); 
+    router.get("/crud", homeController.getCRUD);
 
-    router.post('/post-crud', homeController.postCRUD);
+    router.post("/post-crud", homeController.postCRUD);
 
-    router.get('/get-crud', homeController.displayCRUD);
+    router.get("/get-crud", homeController.displayCRUD);
 
-    router.get('/edit-crud', homeController.editCRUD);
+    router.get("/edit-crud", homeController.editCRUD);
 
-    router.post('/put-crud', homeController.putCRUD);
+    router.post("/put-crud", homeController.putCRUD);
 
-    router.get('/delete-crud', homeController.deleteCRUD);
+    router.get("/delete-crud", homeController.deleteCRUD);
 
-    router.post('/api/login', userController.handleLogin);
+    router.post("/api/login", userController.handleLogin);
 
-    router.get('/api/get-all-users', userController.handleGetAllUsers);
+    router.get("/api/get-all-users", userController.handleGetAllUsers);
 
-    router.post('/api/create-new-user', userController.handleCreateNewUser);
+    router.post("/api/create-new-user", userController.handleCreateNewUser);
 
-    router.put('/api/edit-user', userController.handleEditUser);
+    router.put("/api/edit-user", userController.handleEditUser);
 
-    router.delete('/api/delete-user', userController.handleDeleteUser);
+    router.delete("/api/delete-user", userController.handleDeleteUser);
 
-    return app.use('/', router);
-}
+    router.get("/allcode", userController.getAllCode);
+
+    return app.use("/", router);
+};
 
 module.exports = initWebRoutes;
